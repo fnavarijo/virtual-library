@@ -17,4 +17,10 @@ export default {
   row-gap: 15px;
   column-gap: 15px;
 }
+
+@media screen and (max-width: 1023px) {
+  .book-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
 </style>

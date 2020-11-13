@@ -1,8 +1,11 @@
 <template>
-  <div class="header">
-    <SearchComponent class="header__search" />
+  <div class="app-header">
+    <div class="app-header__background"/>
+    <SearchComponent
+      class="app-header__search"
+    />
   </div>
-  <div class="content">
+  <div class="app-content">
     <BookGrid>
       <BookCard />
       <BookCard />
@@ -29,23 +32,32 @@ export default {
 </script>
 
 <style scoped>
-.header {
-  background-color: blue;
-  height: 20vh;
+.app-header {
+  height: 30vh;
   position: relative;
 }
 
-.header__search {
+.app-header__background {
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-image: url('/img/library.jpg');
+  background-size: cover;
+  /* TODO: check post css features */
+  filter: blur(1px);
+}
+
+.app-header__search {
   position: absolute;
-  bottom: -10px;
+  bottom: -20px;
   left: 0;
   right: 0;
   margin: 0 auto;
   text-align: center;
+  width: 50%;
 }
 
-.content {
-  background-color: #f3f3f3;
-  padding-top: 50px;
+.app-content {
+  padding: 50px 25px 0 25px;
 }
 </style>

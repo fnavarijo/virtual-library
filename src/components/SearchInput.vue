@@ -1,7 +1,18 @@
 <template>
-  <form action="">
-    <input type="text" v-model="bookToFind">
-  </form>
+  <div class="search-input">
+    <form action="">
+      <input
+        v-model="bookToFind"
+        class="search-input__input"
+        type="text"
+      >
+    </form>
+    <img
+      class="search-input__icon"
+      src="/img/search.svg"
+      alt="Buscar el libro"
+    >
+  </div>
 </template>
 
 <script>
@@ -16,3 +27,25 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.search-input {
+  position: relative;
+}
+
+.search-input__icon {
+  position: absolute;
+  right: 0;
+  top: 5px;
+  height: 45px;
+  width: 45px;
+  background-image: url('/img/search.svg');
+}
+
+.search-input__input {
+  border-radius: 5px;
+  padding: 15px;
+  width: 100%;
+  font-size: 1.2em;
+}
+</style>
