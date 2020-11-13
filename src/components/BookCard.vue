@@ -5,7 +5,9 @@
       src="/img/libro.jpg"
       alt="Portada del libro"
     >
-    <h3>El principito</h3>
+    <RouterLink to="/book">
+      <h3>El principito</h3>
+    </RouterLink>
     <div class="book-card__info">
       <span>Carlos Villagran</span>
     </div>

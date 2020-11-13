@@ -1,9 +1,9 @@
 <template>
-  <RouterView />
+  <h1>Some Books</h1>
 </template>
 
 <script>
 export default {
-  name: 'App',
+  name: 'Book',
 }
 </script>
