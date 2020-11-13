@@ -5,6 +5,14 @@
   --white: #fff;
 }
 
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 body {
   background-color: var(--app-bg-color);
 }

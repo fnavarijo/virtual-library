@@ -29,17 +29,12 @@ export default {
 </script>
 
 <style scoped>
-.search-input {
-  position: relative;
-}
-
 .search-input__icon {
   position: absolute;
-  right: 0;
+  right: 15px;
   top: 5px;
   height: 45px;
   width: 45px;
-  background-image: url('/img/search.svg');
 }
 
 .search-input__input {

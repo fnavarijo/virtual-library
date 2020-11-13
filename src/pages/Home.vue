@@ -36,7 +36,7 @@ export default {
 
 <style>
 .app-header {
-  height: 30vh;
+  height: 40vh;
   position: relative;
 }
 
@@ -46,9 +46,15 @@ export default {
   background-repeat: no-repeat;
   background-image: url('/img/library.jpg');
   background-size: cover;
+}
+
+.app-header__background::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
   /* TODO: check post css features */
-  filter: blur(4px);
-  transform: scale(1.1);
+  backdrop-filter: blur(5px);
 }
 
 .app-header__title,
@@ -78,5 +84,18 @@ export default {
 
 .app-content {
   padding: 75px 25px 0 25px;
+}
+
+/* TODO: reuse media queries */
+@media screen and (max-width: 1023px) {
+  .app-header {
+    height: 60vh;
+  }
+
+  .app-header__title {
+    font-size: 2.5em;
+    /* Not liking this is here */
+    padding: 15px;
+  }
 }
 </style>
