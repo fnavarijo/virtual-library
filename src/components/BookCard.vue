@@ -2,21 +2,39 @@
   <div class="book-card">
     <img
       class="book-card__cover"
-      src="/img/libro.jpg"
+      :src="coverImage"
       alt="Portada del libro"
     >
-    <RouterLink to="/book">
-      <h3>El principito</h3>
+    <RouterLink :to="`/book/${id}`">
+      <h3>{{ title }}</h3>
     </RouterLink>
     <div class="book-card__info">
-      <span>Carlos Villagran</span>
+      <span>{{ author }}</span>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-
+  name: 'BookCard',
+  props: {
+    id: {
+      type: String,
+      required: true,
+    },
+    title: {
+      type: String,
+      required: true,
+    },
+    author: {
+      type: String,
+      required: true,
+    },
+    coverImage: {
+      type: String,
+      required: true,
+    }
+  }
 }
 </script>
 

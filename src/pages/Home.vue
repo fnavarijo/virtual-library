@@ -10,11 +10,11 @@
   </div>
   <div class="app-content">
     <BookGrid>
-      <BookCard />
-      <BookCard />
-      <BookCard />
-      <BookCard />
-      <BookCard />
+      <BookCard
+        v-for="(book, index) in books"
+        :key="index"
+        v-bind="book"
+      />
     </BookGrid>
   </div>
 </template>
@@ -24,6 +24,8 @@ import SearchComponent from '../components/SearchInput.vue'
 import BookGrid from '../components/BookGrid.vue';
 import BookCard from '../components/BookCard.vue';
 
+import { getBooks } from '../api/book/getBooks';
+
 export default {
   name: 'Home',
   components: {
@@ -31,6 +33,21 @@ export default {
     BookGrid,
     BookCard,
   },
+  data () {
+    return {
+      books: [],
+    };
+  },
+  async mounted () {
+    const books = await getBooks();
+    const transformedBooks = books.map(({ data, id }) => ({
+      title: data['book-title'],
+      author: data['book-author'],
+      coverImage: data['book-cover'].url,
+      id,
+    }));
+    this.books = transformedBooks;
+  }
 }
 </script>
 
