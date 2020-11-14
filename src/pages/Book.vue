@@ -10,7 +10,7 @@
     <div class="book-page__sources">
       <h2>Versiones</h2>
       <div class="sources__online-read">
-        <a class="sources__link center" :href="book?.data?.['book-pdf'].url">
+        <a class="sources__link center" target="_blank" :href="book?.data?.['book-pdf'].url">
           <img class="sources__icon" src="/img/book.svg" alt="">
           <h3 class="sources__title">Leelo en línea</h3>
         </a>
