@@ -6,6 +6,7 @@
     </h1>
     <SearchComponent
       class="app-header__search"
+      @find="findBooks"
     />
   </div>
   <div class="app-content">
@@ -25,6 +26,7 @@ import BookGrid from '../components/BookGrid.vue';
 import BookCard from '../components/BookCard.vue';
 
 import { getBooks } from '../api/book/getBooks';
+import { getBooksByName } from '../api/book/getBooksByName';
 
 export default {
   name: 'Home',
@@ -47,6 +49,19 @@ export default {
       id,
     }));
     this.books = transformedBooks;
+  },
+  methods: {
+    async findBooks (bookToFind) {
+      const books = await getBooksByName(bookToFind);
+      const transformedBooks = books.results.map(({ data, id }) => ({
+        title: data['book-title'],
+        author: data['book-author'],
+        coverImage: data['book-cover'].url,
+        id,
+      }));
+      this.books = transformedBooks;
+      // console.log('Book: ', transformedBooks);
+    }
   }
 }
 </script>
