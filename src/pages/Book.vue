@@ -4,7 +4,7 @@
       <img class="book-page__back" src="/img/back.svg" alt="">
     </RouterLink>
     <div class="book-page__metainfo">
-      <h1>{{ book?.data?.['book-title'] || '' }}</h1>
+      <h1 class="metainfo__title">{{ book?.data?.['book-title'] || '' }}</h1>
       <img class="metainfo__image" :src="book?.data?.['book-cover'].url || ''" alt="">
     </div>
     <div class="book-page__sources">
@@ -72,5 +72,10 @@ export default {
 
 .metainfo__image {
   width: 200px;
+}
+
+.metainfo__title {
+  padding: 15px;
+  text-align: center;
 }
 </style>
