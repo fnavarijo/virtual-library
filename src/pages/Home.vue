@@ -2,7 +2,7 @@
   <div class="app-header">
     <div class="app-header__background"/>
     <h1 class="app-header__title">
-      Biblioteca virtual
+      Leamos juntos
     </h1>
     <SearchComponent
       class="app-header__search"
