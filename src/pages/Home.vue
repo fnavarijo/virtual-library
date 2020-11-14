@@ -6,7 +6,7 @@
     </h1>
     <SearchComponent
       class="app-header__search"
-      @find="findBooks"
+      @find="handleBooksSearch"
     />
   </div>
   <div class="app-content">
@@ -41,14 +41,7 @@ export default {
     };
   },
   async mounted () {
-    const books = await getBooks();
-    const transformedBooks = books.map(({ data, id }) => ({
-      title: data['book-title'],
-      author: data['book-author'],
-      coverImage: data['book-cover'].url,
-      id,
-    }));
-    this.books = transformedBooks;
+    await this.findAllBooks();
   },
   methods: {
     async findBooks (bookToFind) {
@@ -60,7 +53,21 @@ export default {
         id,
       }));
       this.books = transformedBooks;
-      // console.log('Book: ', transformedBooks);
+    },
+    async findAllBooks () {
+      const books = await getBooks();
+      const transformedBooks = books.map(({ data, id }) => ({
+        title: data['book-title'],
+        author: data['book-author'],
+        coverImage: data['book-cover'].url,
+        id,
+      }));
+      this.books = transformedBooks;
+    },
+    async handleBooksSearch (bookToFind) {
+      /* TODO: not my proudtest conditional */
+      const searchMethod = bookToFind ? this.findBooks: this.findAllBooks;
+      await searchMethod(bookToFind);
     }
   }
 }
