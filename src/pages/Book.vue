@@ -8,15 +8,26 @@
       <img class="metainfo__image" :src="book?.data?.['book-cover'].url || ''" alt="">
     </div>
     <div class="book-page__sources">
-      <h2>Recursos</h2>
+      <h2>Versiones</h2>
       <div class="sources__online-read">
-        <h3>Leelo en línea</h3>
+        <a class="sources__link center" :href="book?.data?.['book-pdf'].url">
+          <img class="sources__icon" src="/img/book.svg" alt="">
+          <h3 class="sources__title">Leelo en línea</h3>
+        </a>
       </div>
       <div class="sources__audio-book">
-        <h3>Escuchalo en línea</h3>
+        <div class="center sources__header">
+          <img class="sources__icon" src="/img/hear.svg" alt="">
+          <h3 class="sources__title">Escuchalo en línea</h3>
+        </div>
+        <div v-html="book?.data?.['book-audio'].html" />
       </div>
       <div class="sources__video">
-        <h3>Ve el video</h3>
+        <div class="center sources__header">
+          <img class="sources__icon" src="/img/see.svg" alt="">
+          <h3 class="sources__title">Ve el video</h3>
+        </div>
+        <div v-html="book?.data?.['book-video'].html" />
       </div>
     </div>
   </div>
@@ -37,6 +48,7 @@ export default {
   async mounted () {
     const { id } = this.$route.params;
     const book = await getSingleBook(id);
+    console.log('Book: ', book);
     this.book = book;
   }
 }
@@ -68,6 +80,7 @@ export default {
 
 .book-page__sources {
   padding: 30px;
+  height: 100vh;
 }
 
 .metainfo__image {
@@ -77,5 +90,42 @@ export default {
 .metainfo__title {
   padding: 15px;
   text-align: center;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.sources__link {
+  text-decoration: none;
+  color: var(--black);
+}
+
+.sources__icon {
+  height: 50px;
+  width: 50px;
+  margin-right: 15px;
+}
+
+.sources__title {
+  display: inline-block;
+  margin: 0;
+  font-size: 1.7em;
+}
+
+.sources__header {
+  margin-bottom: 20px;
+}
+
+.sources__video,
+.sources__audio-book {
+  display: flex;
+  flex-direction: column;
+}
+
+.book-page__sources > div {
+  margin: 25px;
 }
 </style>

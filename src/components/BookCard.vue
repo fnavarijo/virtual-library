@@ -6,7 +6,7 @@
         :src="coverImage"
         alt="Portada del libro"
       >
-        <h3>{{ title }}</h3>
+        <h3 class="book-card__title">{{ title }}</h3>
       <div class="book-card__info">
         <span>{{ author }}</span>
       </div>
@@ -54,5 +54,9 @@ export default {
 .book-card__link {
   text-decoration: none;
   color: var(--black);
+}
+
+.book-card__title {
+  font-size: 1.5em;
 }
 </style>
