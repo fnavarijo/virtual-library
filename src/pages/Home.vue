@@ -1,6 +1,10 @@
 <template>
   <div class="app-header">
     <div class="app-header__background"/>
+    <a href="https://drive.google.com/drive/folders/1VHzmY4WobAUOJOThJUGGq38x6xqrfyNn?usp=sharing" target="_blank" class="app-header__resources">
+      <img class="app-header__resources-icon" src="/img/gear.svg" alt="">
+      <span class="app-header__resources-text">Recursos</span>
+    </a>
     <h1 class="app-header__title">
       Leamos juntos
     </h1>
@@ -45,6 +49,7 @@ export default {
   },
   methods: {
     async findBooks (bookToFind) {
+      console.log('BookToFind', bookToFind);
       const books = await getBooksByName(bookToFind);
       const transformedBooks = books.results.map(({ data, id }) => ({
         title: data['book-title'],
@@ -119,6 +124,29 @@ export default {
   color: var(--white);
   font-size: 4em;
   transform: translateY(-50%);
+}
+
+.app-header__resources {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.5625rem;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 0.625rem;
+  text-decoration: none;
+}
+
+.app-header__resources-text {
+  color: #000;
+}
+
+.app-header__resources-icon {
+  height: 3.125rem;
+  width: 3.125rem;
+  margin-right: 0.625rem;
 }
 
 .app-content {
